@@ -1,0 +1,33 @@
+<div class="page-header">
+  <h2>Обратная связь(сообщения)</h2>
+</div>
+
+<div class="content">
+  <table class="table table-bordered">
+    <thead>
+    <tr>
+      <th>Имя</th>
+      <th>Email</th>
+      <th>Телефон</th>
+      <th>Сообщение</th>
+      <th>Действия</th>
+    </tr>
+    </thead>
+    <tbody>
+    <%- @feedbacks.each do |item| %>
+        <tr>
+          <td><%= item.name %></td>
+          <td><%= item.email %></td>
+          <td><%= item.phone %></td>
+          <td><%= item.message %></td>
+          <td>
+            <%= link_to admin_feedback_path(item), class: 'btn btn-danger', method: "delete" do %>
+                <i class="fa fa-lg fa-trash"></i>
+                Удалить
+            <% end %>
+          </td>
+        </tr>
+    <% end %>
+    </tbody>
+  </table>
+</div>

@@ -1,0 +1,60 @@
+
+.footer{
+	@extend .wrapper;
+	box-sizing: border-box;
+	margin-top: 18px;
+	padding: 30px 20px 15px;
+	background-color: #181614;
+	color: #959595;
+	font-size: 11px;
+
+	a{
+		color: #f4c82b;
+	}
+}
+
+.footer-row{
+	width: 100%;
+	display: table;
+	margin: 0 0 30px;
+
+	.footer-cell{
+		display: table-cell;
+		width: 34%;
+		padding: 0 0 0 30px;
+		vertical-align: top;
+
+		.footer-cell__title{
+			position: relative;
+			margin: 0 0 10px;
+			color: #f4c82b;
+			font-size: 15px;
+			font-weight: 600;
+
+			&:before{
+				content: '';
+				position: absolute;
+				left: -30px;
+				top: 0;
+				width: 22px;
+				height: 22px;
+				background: image-url('site/marker.png') no-repeat 0 0;
+			}
+		}
+
+		p{
+			margin: 2px 0;
+		}
+	}
+}
+
+.create{
+	padding-top: 0;
+	white-space: nowrap;
+	text-align: right;
+
+	img{
+		vertical-align: middle;
+		height: 16px;
+	}
+}

@@ -1,0 +1,66 @@
+.panel.panel-success
+  .panel-heading.clearfix
+    h3.panel-title.pull-left Информация о товаре
+
+  .panel-body
+    .alert.alert-danger ng-if="errors"
+      ul ng-repeat="error in errors"
+        li ng-bind="error"
+    .row
+      .col-md-6
+        .form-group
+          label for="name" Название
+          input.form-control#name name="name" type="text" ng-model="obj.product.name"
+      .col-md-2
+        .form-group
+          label for="article" Артикул
+          input.form-control#article name="name" type="text" ng-model="obj.product.article"
+      .col-md-2
+        .form-group
+          label for="price" Цена(руб.)
+          input.form-control#price type="text" ng-model="obj.product.price"
+      .col-md-2
+        .form-group
+          label for="sale" Скидка(%)
+          input.form-control#sale type="text" ng-model="obj.product.sale"
+      /.col-md-2
+      /  .form-group
+      /    div class="checkbox"
+      /      label 
+      /        input id="new" type="checkbox" ng-model="obj.product.new"
+      /        |Новинка
+
+    /div
+    /  label for="body_ru" Описание
+    /  textarea.form-control#body_ru rows="4" ng-model="obj.product.body"
+
+
+.panel.panel-success
+  .panel-heading.clearfix
+    h3.panel-title.pull-left Фотографии товара
+  .panel-body
+    photos-uploaded resource-name="product" resource-id="#{@product.id}"
+    uploader-component upload-url="/admin/product/photos/upload" resource-name="product_id" resource-id="#{@product.id}"
+
+
+.panel.panel-success
+  .panel-heading.clearfix
+    h3.panel-title.pull-left Категории/Бренды
+  .panel-body
+    .row
+      .col-sm-6
+        =render 'admin/products/categories'
+      .col-sm-6
+        =render 'admin/products/brands'
+
+
+.panel.panel-success
+  .panel-heading.clearfix
+    h3.panel-title.pull-left Свойства товара
+  .panel-body
+    .row
+      .col-sm-6
+        =render 'admin/products/properties'
+
+
+=render 'admin/products/groups'

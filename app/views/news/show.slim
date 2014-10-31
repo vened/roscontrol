@@ -1,0 +1,17 @@
+-content_for :title do
+  =@news.name
+
+-content_for :path do
+  ul.path
+    li
+      a href="/" Главная
+    li -
+    li
+      a href="/news/" Наши новости
+    li -
+    li=@news.name
+      
+
+h1=@news.name
+
+= raw @news.body

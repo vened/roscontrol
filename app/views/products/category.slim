@@ -1,0 +1,44 @@
+-content_for :title do
+  =@category.name
+.main.catalog ng-controller="ProductFilterCtrl"
+  =render 'filter'
+
+  .clearfix
+    h1.pull-left= @category.name
+    ul.path.pull-left style="padding:7px 0 0 30px"
+      li=link_to "Каталог", "/catalog/"
+      li >
+      li=link_to @category.name, @category.front_full_path
+
+  =render 'products'
+  
+  
+  .row.product-list ng-if="products == null" 
+    -@products.each_with_index do |product, i|
+      -i = i + 1
+      .col-md-3.product-item
+        =link_to product.full_path, class: "product-item-photo" do
+          -if product.sale
+            .product-item-sale
+              = number_to_percentage(product.sale, precision: 0)  
+              | &nbsp;скидка
+          -if product.photos.length > 0
+            =image_tag product.photos.first.photo.thumb, class: "img-responsive"
+        h3.product-item-name=link_to product.name, product.full_path
+        -if product.sale
+          .product-item-price.sale
+            | от&nbsp;
+            strong= number_to_currency(product.price, unit: 'руб/м2', delimiter: " ", precision: 0)
+          .product-item-price
+            -@price_sale = product.price/100 * (100 - product.sale)
+            | от&nbsp;
+            strong= number_to_currency(@price_sale, unit: 'руб/м2', delimiter: " ", precision: 0)
+        -else
+          .product-item-price
+            | от&nbsp;
+            strong= number_to_currency(product.price, unit: 'руб/м2', delimiter: " ", precision: 0)
+      -if i > 0 && i % 4 == 0
+        .clear
+
+  .paginate ng-if="products == null"
+    = paginate @products

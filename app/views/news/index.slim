@@ -1,0 +1,20 @@
+-content_for :title do
+  | Наши новости
+
+-content_for :path do
+  ul.path
+    li
+      a href="/" Главная
+    li -
+    li Наши новости
+
+h1 Наши новости
+
+-@news.each do |item|
+  .news
+    h2=link_to item.name, news_show_path(item)
+    .date= item.created_at.strftime("%d.%m.%Y")
+    .body= raw item.body.truncate(180)
+
+
+= paginate @news

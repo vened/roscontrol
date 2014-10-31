@@ -1,0 +1,26 @@
+.page-header
+  h2 Менеджеры системы
+  .page-header-actions
+    = link_to new_admin_manager_path, class: 'btn btn-success' do
+      i class="fa fa-plus"
+      ' Добавить менеджера
+
+table class="table table-bordered"
+  thead
+    tr
+      th id
+      th Имя
+      th Email
+      th Действия
+
+  tbody
+    -@managers.each do |item|
+      tr
+        td=item.id
+        td=item.name
+        td=item.email
+        td
+          = link_to "Редактировать", edit_admin_manager_path(item), class: 'btn btn-success'
+          span &nbsp;
+          = link_to "Удалить", admin_manager_path(item), class: 'btn btn-danger', method: "delete"
+            

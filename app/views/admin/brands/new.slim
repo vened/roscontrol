@@ -1,0 +1,11 @@
+form ng-controller="BrandsFormCtrl"
+
+  .page-header
+    h2 Добавить производителя
+    .page-header-actions
+      button.btn.btn-success type="submit" ng-click="update('#{@brand.id}')" ng-init="findBrand('#{@brand.id}')"
+        i.fa.fa-floppy-o
+        | Сохранить
+      =link_to "Отменить", admin_brands_path, :class => "btn btn-default"
+
+  =render 'admin/brands/form'

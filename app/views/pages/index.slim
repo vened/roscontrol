@@ -1,0 +1,8 @@
+-content_for :title do
+  | Главная
+
+
+ul
+  -@categories.each do |category|
+    li=link_to category.front_full_path, class: "category" do
+      span=category.name

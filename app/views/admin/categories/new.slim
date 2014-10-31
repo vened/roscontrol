@@ -1,0 +1,15 @@
+form ng-init="obj.authenticity_token = '#{form_authenticity_token}'" ng-controller="CategoriesFormCtrl"
+  .page-header
+    h2 Новая категории
+    .page-header-actions
+      -if @category.name.nil?
+        button.btn.btn-success type="submit" ng-click="submit()" 
+          i.fa.fa-floppy-o
+          | Сохранить
+      -else
+        button.btn.btn-success type="submit" ng-click="update('#{@category.id}')" ng-init="findCategory('#{@category.id}')"
+          i.fa.fa-floppy-o
+          | Сохранить
+      =link_to "Отменить", admin_categories_path, :class => "btn btn-default"
+
+  =render 'admin/categories/form'

@@ -1,0 +1,10 @@
+.page-header
+  h2 Станицы сайта
+  .page-header-actions
+    = link_to new_admin_page_path, class: 'btn btn-success' do
+      i class="fa fa-plus"
+      ' Добавить страницу
+
+.content.page
+  ol.sortable_tree data-max_levels="2" data-rebuild_url="#{rebuild_admin_pages_url}"
+    = sortable_tree @pages

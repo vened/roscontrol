@@ -1,0 +1,8 @@
+/=debug request.path
+.block
+  .block-title Каталог плитки
+  .block-body
+    ul
+      -@categories.each do |category|
+        li class=(@current_path == category.front_full_path ? 'active' : '')
+          =link_to category.name, category.front_full_path

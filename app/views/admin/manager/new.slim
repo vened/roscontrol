@@ -1,0 +1,19 @@
+h2.page-header Создать нового администратора системы
+
+.row
+  .col-md-4
+    =form_for(@manager, url: '/admin/manager') do |f|
+      .form-group
+        = f.label :name, "Имя"
+        = f.text_field :name, :class => "form-control"
+      .form-group
+        = f.label :email, "Email"
+        = f.text_field :email, :class => "form-control"
+      .form-group
+        = f.label :password, "Новый пароль"
+        = f.password_field :password, :class => "form-control"
+      .form-group
+        = f.label :password_confirmation, "Повторите новый пароль"
+        = f.password_field :password_confirmation, :class => "form-control"
+      .form-group
+        = f.submit "Сохранить изменения", class: "btn btn-success"

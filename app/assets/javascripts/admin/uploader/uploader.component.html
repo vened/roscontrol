@@ -1,0 +1,30 @@
+<div class="form-group" nv-file-drop="" uploader="uploader">
+	<label>Загрузить фото</label>
+	<input type="file" nv-file-select="" uploader="uploader" multiple/>
+	<div class="row" ng-show="uploader.queue.length > 0">
+		<div class="col-sm-12">
+			<table class="table">
+				<thead>
+				<tr>
+					<th>Изображение</th>
+					<th ng-show="uploader.isHTML5">Размер</th>
+					<th ng-show="uploader.isHTML5">Прогресс</th>
+				</tr>
+				</thead>
+				<tbody>
+				<tr ng-repeat="item in uploader.queue">
+					<td>
+						<div class="thumbnail" ng-show="uploader.isHTML5" uploader-thumb="{ file: item._file, width: 100, height: 100 }"></div>
+					</td>
+					<td ng-show="uploader.isHTML5" nowrap>{{ item.file.size/1024/1024|number:2 }} MB</td>
+					<td ng-show="uploader.isHTML5">
+						<div class="progress" style="margin-bottom: 0;">
+							<div class="progress-bar" role="progressbar" ng-style="{ 'width': item.progress + '%' }"></div>
+						</div>
+					</td>
+				</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+</div>

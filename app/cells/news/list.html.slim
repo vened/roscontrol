@@ -1,0 +1,10 @@
+/=debug request.path
+.block
+  .block-title Новости
+  .block-body
+    -@news.each do |news|
+      .news
+        .date= news.created_at.strftime("%d.%m.%Y")
+        .body= raw news.body.truncate(100)
+        .news-more
+          =link_to "> Подробнее", news_show_path(news)

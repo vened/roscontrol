@@ -1,0 +1,10 @@
+div
+  div.row
+    -@properties.each do |property|
+      .col-sm-3
+        label= property.name
+        select ng-model="obj.filters.#{property.id}"
+          -property.values.each do |value|
+            option value="#{value.id}"= value.value
+    .col-sm-3
+      .btn.btn-success ng-click="setFilters()" Применить

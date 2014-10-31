@@ -1,0 +1,24 @@
+= form_for :news, url: admin_news_index_path do |f|
+  .page-header
+    h2 Добавление новости
+    .page-header-actions
+      button.btn.btn-success type="submit"
+        i.fa.fa-floppy-o
+        | Сохранить
+      =link_to "Отменить", admin_news_index_path, :class => "btn btn-default"
+
+  .panel.panel-success ng-controller="NewsFormCtrl"
+    .panel-body
+      .row
+        .col-md-8
+          .form-group
+            = f.label :name, "Заголовок"
+            = f.text_field :name, class: "form-control"
+        .col-md-4
+          .form-group
+            label Дата
+            div
+              = date_select :news, :created_at
+      .form-group.rich
+        = f.label :body, "Содержимое"
+        = f.text_area :body, class: "form-control"

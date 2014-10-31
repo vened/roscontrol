@@ -1,0 +1,11 @@
+-content_for :title do
+  | Каталог
+
+
+.wrapper
+  .row
+    -@categories.each do |category|
+      .col-md-4
+        =link_to category.front_full_path, class: "category" do
+          span=category.name
+          =image_tag category.photos.first.photo.brand, class: "img-responsive"

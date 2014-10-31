@@ -1,0 +1,43 @@
+<form role="form" ng-submit="submit()">
+
+	<div class="page-header">
+		<h2>Добавить/редактировать свойство</h2>
+		<div class="page-header-actions">
+			<button type="submit" class="btn btn-success">
+				<i class="fa fa-floppy-o"></i>
+				Сохранить
+			</button>
+		</div>
+	</div>
+
+	<div class="panel panel-success">
+		<div class="panel-heading">
+			<h3 class="panel-title">Информация о свойстве</h3>
+		</div>
+		<div class="panel-body">
+			<div class="row form-group">
+				<div class="col-xs-6">
+					<label for="name">Название</label>
+					<input id="name" type="text" class="form-control" placeholder="Название" ng-model="obj.name" required="">
+				</div>
+				<div class="col-xs-3">
+					<label for="name">Единица измерения</label>
+					<select class="form-control" ng-model="obj.unit" ng-change="unitTypeSet()">
+						<option value=""></option>
+						<option value="кг.">кг. (Вес: 100 кг. килограмм)</option>
+						<option value="см.">см. (Размер: 100x100 см. сантиметры)</option>
+					</select>
+				</div>
+				<div class="col-xs-3">
+					<label for="name">сss class</label>
+					<select class="form-control" ng-model="obj.style">
+						<option value=""></option>
+						<option value="class-1">property-1</option>
+						<option value="class-2">property-2</option>
+						<option value="class-3">property-3</option>
+					</select>
+				</div>
+			</div>
+		</div>
+	</div>
+</form>

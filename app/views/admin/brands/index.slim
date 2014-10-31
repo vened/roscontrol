@@ -1,0 +1,10 @@
+.page-header
+  h2 Производители
+  .page-header-actions
+    = link_to new_admin_brand_path, class: 'btn btn-success' do
+      i class="fa fa-plus"
+      ' Добавить производителя
+
+.content.page
+  ol.sortable_tree data-max_levels="5" data-rebuild_url="#{rebuild_admin_brands_url}"
+    = sortable_tree @brands

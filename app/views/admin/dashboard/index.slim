@@ -1,0 +1,7 @@
+div ng-controller="AlertCtrl"
+  .alert.alert-success ng-if="success" 
+    button type="button" class="close" ng-click="alertClose()" 
+      span.fa.fa-close
+    span ng-bind="success"
+
+div ng-view=""

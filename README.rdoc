@@ -1,0 +1,6 @@
+== README
+
+===База данных 
+	mysql
+	Установка БД и миграций + тестовые данные
+	rake db:drop db:create db:migrate db:seed

@@ -1,0 +1,140 @@
+.block{
+    margin: 0 0 35px;
+    border: 2px solid #dddcdc;
+
+    .block-title{
+        border-bottom: 2px solid #dddcdc;
+        color: #b92929;
+        font-size: 18px;
+        padding: 2px 0 4px 12px;
+        background: image-url('site/block-title.jpg') no-repeat 0 6px;
+    }
+    .block-body{
+        padding: 10px;
+        font-size: 15px;
+
+        ul{
+            margin: 0;
+
+            li{
+                margin: 2px 0;
+
+                a{
+                    color: #363636;
+
+                    &:hover{
+                        color: #b92929;
+                    }
+                }
+
+                &.active{
+                    a{
+                        color: #b92929;
+                    }
+                }
+            }
+        }
+    }
+}
+
+.path{
+    margin: 20px 0 30px;
+    padding: 0;
+    font-size: 13px;
+
+    li{
+        display: inline-block;
+        margin-right: 5px;
+        color: #959595;
+
+        a{
+            color: #959595;
+
+            &:hover{
+                color: #b92929;
+            }
+        }
+        
+        span{
+            color: #181614;
+        }
+    }
+}
+
+.carousel{
+    @extend .wrapper;
+    height: 220px;
+    margin-bottom: 1px;
+
+    .carousel-control{
+        display: none;
+    }
+
+    .carousel-caption{
+        left: 0;
+        top: 0;
+        bottom: 0;
+        height: 220px;
+        width: 567px;
+        padding: 30px 35px;
+        text-align: left;
+        background: image-url('site/carousel-caption.png') no-repeat 0 0;
+        color: #000;
+        text-shadow: none;
+
+        h2{
+            width: 280px;
+            margin: 0;
+            font-size: 36px;
+            line-height: 51px;
+            font-weight: 300;
+        }
+        p{
+            width: 280px;
+            margin: 0;
+        }
+    }
+
+    .carousel-indicators{
+        right: 20px;
+        bottom: 7px;
+        left: auto;
+        margin-left: auto;
+        margin-bottom: 0;
+        text-align: right;
+
+        li{
+            width: 10px !important;
+            height: 10px !important;
+            margin: 0 0 0 5px;
+            border: none;
+            background: #181614;
+
+            &.active{
+                background: #dfe672;
+            }
+        }
+    }
+}
+
+.paginate{
+	margin: 20px 0 0;
+}
+
+.pagination{
+	margin: 0;
+	
+	> li{
+		display: inline-block;
+		
+		&.gap{
+			background-color: white;
+			border: 1px solid #dddddd;
+			line-height: 1.42857;
+			margin-left: -1px;
+			padding: 6px 12px;
+			text-decoration: none;
+			vertical-align: top;
+		}
+	}
+}

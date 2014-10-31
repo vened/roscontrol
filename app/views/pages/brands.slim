@@ -1,0 +1,19 @@
+-content_for :title do
+  | Бренды
+
+-content_for :path do
+  ul.path
+    li
+      a href="/" Главная
+    li -
+    li=link_to "Бренды", "/brands/"
+
+  h1 Бренды
+
+
+
+.row
+  -@brands.each do |brand|
+    .col-md-4
+      =link_to(brand.front_full_path, class: "brands-item") do
+        =image_tag brand.photos.first.photo.brand

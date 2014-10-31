@@ -1,0 +1,28 @@
+.panel.panel-success
+  .panel-heading
+    h3.panel-title Информация о бренде
+
+  .panel-body
+    .alert.alert-danger ng-if="errors"
+      h4.text-center При сохранении возникли следующие ошибки:
+      br
+      dl.dl-horizontal ng-if="errors.name" 
+        dt Название: 
+        dd ng-bind="errors.name[0]"
+      /dl.dl-horizontal ng-if="errors.path" 
+        dt Путь: 
+        dd ng-bind="errors.path[0]"
+    .row
+      .col-md-12
+        .form-group
+          label for="name" Название
+          input.form-control#name name="name" type="text" ng-model="obj.name" ng-change="setPath(obj.name)" 
+
+      /.col-md-6
+        .form-group
+          label for="path" Путь(url, например - kamod, только латиницей)
+          input.form-control#path type="text" ng-model="obj.path"
+    .row
+      .col-sm-12
+        photos-uploaded resource-name="brand" resource-id="#{@brand.id}"
+        uploader-component upload-url="/admin/brand/photos/upload" resource-name="brand_id" resource-id="#{@brand.id}"

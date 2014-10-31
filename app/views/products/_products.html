@@ -1,0 +1,43 @@
+<div class="row product-list">
+	<ng:any ng-repeat="product in products">
+	<div class="col-md-3 product-item">
+		<a ng-href="{{ product.full_path }}" class="product-item-photo">
+			<div class="product-item-sale" ng-if="product.product.sale">
+				{{ product.product.sale }}%
+				скидка
+			</div>
+			<img class="img-responsive" ng-src="{{ product.photo }}">
+		</a>
+
+		<h3 class="product-item-name">
+			<a ng-href="{{ product.full_path }}">
+				{{ product.product.name }}
+			</a>
+		</h3>
+
+		<div class="product-item-price" ng-if="product.product.sale === null">
+			от
+			<strong>
+				{{ product.product.price }}
+				руб/м2
+			</strong>
+		</div>
+
+		<div class="product-item-price sale" ng-if="product.product.sale">
+			от
+			<strong>
+				{{ product.product.price }}
+				руб/м2
+			</strong>
+		</div>
+		<div class="product-item-price" ng-if="product.product.sale">
+			от
+			<strong>
+				{{ product.product.price/100 * (100 - product.product.sale)}}
+				руб/м2
+			</strong>
+		</div>
+	</div>
+	<div class="clear" ng-if="($index+1)%4 == 0"></div>
+	</ng:any>
+</div>

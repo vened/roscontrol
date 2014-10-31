@@ -1,0 +1,29 @@
+-content_for :title do
+  =@brand.name
+
+-content_for :path do
+  ul.path
+    li
+      a href="/" Главная
+    li -
+    li=link_to "Бренды", "/brands/"
+    li -
+    li=link_to @brand.name, @brand.front_full_path
+
+h1= @brand.name
+
+=image_tag @brand.photos.first.photo.brand
+
+-@categories.each do |category|
+  -@category_products = category.products
+  -@brand_products = @brand.products
+  -@items = @category_products.merge(@brand_products)
+  -if @items.length > 0
+    h2= category.name
+    .row
+      -@items.each do |product|
+        .col-md-4
+          .product-item
+            =link_to "#{category.front_full_path + '/product/' + product.id.to_s}" do
+              =image_tag product.photos.first.photo.thumb
+              .product-item-title= product.name

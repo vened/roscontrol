@@ -1,0 +1,36 @@
+.page-header
+  h2 Категории товара
+  .page-header-actions
+    = link_to new_admin_category_path, class: 'btn btn-success' do
+      i class="fa fa-plus"
+      ' Добавить категорию
+
+.content.page
+  ol.sortable_tree data-max_levels="2" data-rebuild_url="#{rebuild_admin_categories_url}"
+    = sortable_tree @categories
+
+
+/table class="table table-bordered"
+  thead
+    tr
+      th id
+      th Название
+      th Путь
+      th Действия
+
+  /tbody
+    -@categories.each do |item|
+      tr
+        td=item.id
+        td=item.name
+        td
+          -item.self_and_ancestors.each do |i|
+            = '/'
+            = i.path
+        td
+          = link_to "Редактировать", edit_admin_category_path(item), class: 'btn btn-success'
+          span &nbsp;
+          = link_to "Удалить", admin_category_path(item), class: 'btn btn-danger', method: "delete"
+            
+            
+            

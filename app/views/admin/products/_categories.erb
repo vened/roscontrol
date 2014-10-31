@@ -1,0 +1,14 @@
+<div class="form-group">
+  <label>Категории</label>
+
+  <div class="checkbox" ng-repeat="category in categories">
+    <label>
+      <input type="checkbox"
+             ng-model="category[$index]"
+             ng-change="setCategory(obj.product.id, category.id)"
+             ng-checked="category.checked"
+      >
+      <span>{{category.name}}</span>
+    </label>
+  </div>
+</div>

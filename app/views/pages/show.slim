@@ -1,0 +1,17 @@
+-content_for :title do
+  =@page.name
+
+.main.page.photo-gallery
+  .sub_menu=render_cell :sub_menu, :list
+  -content_for :path do
+    ul.path
+      li
+        a href="/" Главная
+      li -
+      li=link_to @page.name, @page.path
+  
+  h1=@page.name
+  p= raw @page.body
+  
+  
+  =render 'feedback_form' if @page.feedback

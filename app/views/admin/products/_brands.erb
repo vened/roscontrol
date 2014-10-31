@@ -1,0 +1,13 @@
+<div class="form-group">
+  <label>Бренды</label>
+  <div class="checkbox" ng-repeat="brand in brands">
+    <label>
+      <input type="checkbox"
+             ng-model="brand[$index]"
+             ng-change="setBrand(obj.product.id, brand.id)"
+             ng-checked="brand.checked"
+      >
+      <span>{{brand.name}}</span>
+    </label>
+  </div>
+</div>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html ng-app="app">
+<head>
+    <title>santemax -  <%= yield :title %></title>
+    <%= stylesheet_link_tag 'site/base', media: 'all' %>
+    <%= javascript_include_tag 'application' %>
+    <%= csrf_meta_tags %>
+</head>
+<body>
+
+<%#= render 'shared/header' %>
+
+<%#= render_cell :carousel, :carousel %>
+
+<%= yield %>
+
+<!--<div class="main photo-gallery">-->
+    <%#= yield :path %>
+    <%#= render_cell :catalog, :list %>
+    <%#= render_cell :news, :list %>
+<!--</div>-->
+
+
+<%#= render 'shared/footer' %>
+
+</body>
+</html>

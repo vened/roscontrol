@@ -1,0 +1,5 @@
+/=debug request.path
+ul.menu
+  -@pages.each do |page|
+    li class=(@current_path == page.path ? 'active' : '') 
+      =link_to page.name, "/#{page.path}"

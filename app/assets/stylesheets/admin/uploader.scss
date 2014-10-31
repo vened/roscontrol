@@ -1,0 +1,27 @@
+.thumbnail{
+	position: relative;
+
+	.glyphicon-remove{
+		position: absolute;
+		right: 5px;
+		top: 5px;
+		font-size: 20px;
+		color: red;
+		opacity: .6;
+		cursor: pointer;
+
+		&:hover{
+			opacity: 1;
+		}
+	}
+	
+	
+	&.showForm{
+		width: 300px;
+	}
+	
+}
+
+.progress{
+	height: 5px;
+}

@@ -1,0 +1,24 @@
+h2.page-header Менеджер системы
+
+dl.dl-horizontal
+  dt Имя
+  dd= @manager.name
+
+dl.dl-horizontal
+  dt Email
+  dd= @manager.email
+
+dl.dl-horizontal
+  dt Дата создания
+  dd= @manager.created_at
+
+dl.dl-horizontal
+  dt Дата изменения
+  dd= @manager.updated_at
+
+dl.dl-horizontal
+  dt Действия
+  dd
+    = link_to "Редактировать", edit_admin_manager_path(@manager), class: 'btn btn-success'
+    span &nbsp;
+    = link_to "Удалить", admin_manager_path(@manager), class: 'btn btn-danger', method: "delete"

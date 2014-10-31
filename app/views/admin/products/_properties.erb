@@ -1,0 +1,32 @@
+<div class="row">
+  <div class="col-sm-12">
+    <h4><strong>Свойства товара</strong></h4>
+    <div ng-repeat="property in properties" class="property">
+      <h4>
+        <span ng-bind="property.name"></span>
+        <span class="btn btn-success btn-xs add-property"><span class="fa fa-plus"></span></span>
+      </h4>
+      <div class="row property_add" style="display: none">
+        <div class="col-xs-8">
+          <input type="text" class="form-control"
+                 ng-model="property.name"
+          >
+        </div>
+        <div class="col-xs-4">
+          <span class="btn btn-success"
+          ><span class="fa fa-plus"></span></span>
+        </div>
+      </div>
+      <div class="checkbox" ng-repeat="value in property.values">
+        <label>
+          <input type="checkbox"
+                 ng-model="property[$index]"
+                 ng-change="setPropertyValue(obj.product.id, property.id, value.id)"
+                 ng-checked="value.checked"
+          >
+          <span ng-bind="value.value"></span>
+        </label>
+      </div>
+    </div>
+  </div>
+</div>

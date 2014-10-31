@@ -1,0 +1,13 @@
+.panel.panel-primary
+  .panel-heading
+    h3.panel-title Войти
+  .panel-body
+    = form_for(:session, url: admin_sessions_path) do |f|
+      .form-group
+        = f.label :email, "Email"
+        = f.text_field :email, :class => "form-control input-lg"
+      .form-group
+        = f.label :password, "Пароль"
+        = f.password_field :password, :class => "form-control input-lg"
+      .form-group.text-center
+        = f.submit "Войти", class: "btn btn-lg btn-primary"

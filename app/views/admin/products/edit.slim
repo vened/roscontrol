@@ -1,0 +1,14 @@
+form ng-init="obj.authenticity_token = '#{form_authenticity_token}'" ng-controller="ProductsFormCtrl"
+  .page-header
+    h2 Редактирование товара
+    .page-header-actions
+      button.btn.btn-success type="submit" ng-click="update(#{@product.id})" ng-init="findProduct(#{@product.id})"
+        i class="fa fa-floppy-o"
+        | Сохранить
+      | &nbsp;
+      =link_to "Отменить", admin_products_path, :class => "btn btn-default"
+  /= link_to new_admin_product_path, class: 'btn btn-success' do
+  /  i class="fa fa-plus"
+  /  ' Добавить товар
+  /
+  =render 'admin/products/form'

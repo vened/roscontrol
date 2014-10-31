@@ -1,0 +1,21 @@
+.brand-cont
+  a href="/admin/" class="logo" Rocket-cms
+
+ul class="sidebar-nav"
+  li=link_to "Станицы сайта", admin_pages_path
+  li=link_to "Новости", admin_news_index_path
+  li=link_to "Товары", admin_products_path
+  li ng-class="{'active': menuActive == 'property'}"
+    =link_to t('properties'), '#/properties'
+  li=link_to "Категории товаров", admin_categories_path
+  li=link_to "Производители", admin_brands_path
+  li ng-class="{'active': menuActive == 'galleries'}"
+    =link_to "Фотографии", '#/galleries'
+  li=link_to "Обратная связь", admin_feedbacks_path
+  li=link_to "Администраторы", admin_manager_index_path
+
+ul class="sidebar-nav users"
+  -if current_manager
+    li=link_to current_manager.email, admin_manager_path(current_manager) 
+  li
+    = link_to "Выйти", admin_signout_path, method: "delete"

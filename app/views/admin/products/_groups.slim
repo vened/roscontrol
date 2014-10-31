@@ -1,0 +1,20 @@
+.panel.panel-success
+  .panel-heading.clearfix
+    h3.panel-title.pull-left Связанные группы товаров
+  .panel-body
+    div ng-repeat="sub_product in obj.sub_products"
+      .row.form-group
+        .col-md-11
+          input.form-control type="text" ng-model="sub_product.name" ng-blur="updateSubProduct(sub_product)"
+        .col-md-1
+          span.btn.btn-danger ng-click="destroySubProduct(sub_product)"
+            i.fa.fa-lg.fa-trash
+      .form-grop
+        photos-uploaded resource-name="sub_product" resource-id="{{sub_product.id}}" show-form="true"
+        uploader-component upload-url="/admin/sub_product/photos/upload" resource-name="sub_product_id" resource-id="{{sub_product.id}}"
+        br
+
+
+    span.btn.btn-success ng-click="setSubProduct(obj.product.id)"
+      i.fa.fa-plus
+      | Добавить группу

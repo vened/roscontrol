@@ -1,0 +1,55 @@
+<div class="page-header">
+	<h2>Свойство</h2>
+	<div class="page-header-actions">
+		<a href="#/properties" class="btn btn-primary">
+			<i class="fa fa-long-arrow-left"></i>
+			Назад к списку свойств
+		</a>
+	</div>
+</div>
+
+<div class="panel panel-success">
+	<div class="panel-heading">
+		<h3 class="panel-title">Свойство: <strong>{{ obj.property.name }}</strong></h3>
+	</div>
+	<div class="panel-body">
+		<div class="row">
+			<div class="col-xs-4" ng-if="obj.property.unit || obj.property.style">
+				<dl ng-if="obj.property.unit">
+					<dt>Единица измерения</dt>
+					<dd>{{ obj.property.unit }}</dd>
+				</dl>
+				<dl ng-if="obj.property.style">
+					<dt>css class</dt>
+					<dd>{{ obj.property.style }}</dd>
+				</dl>
+			</div>
+			<div class="col-xs-4">
+				<div class="form-group">
+					<label>Значения:</label>
+
+					<div class="list-values" ng-repeat="val in obj.values">
+						<span class="label label-success">
+							{{ val.value }}
+							<i class="fa fa-lg fa-trash" ng-click="removeValue(val.id)"></i>
+						</span>
+					</div>
+				</div>
+			</div>
+			<div class="col-xs-4">
+				<form role="form" ng-submit="submit()">
+					<div class="form-group">
+						<label for="name">Добавить новое значение</label>
+						<input id="name" type="text" class="form-control" placeholder="Значение"
+						       ng-model="values.property.property_values"
+						       required="">
+					</div>
+					<button type="submit" class="btn btn-primary">
+						<i class="fa fa-floppy-o"></i>
+						Добавить
+					</button>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>

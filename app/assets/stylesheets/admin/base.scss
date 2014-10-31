@@ -1,0 +1,204 @@
+@import url(http://fonts.googleapis.com/css?family=Open+Sans:400,800,700&subset=latin,cyrillic);
+@import "bootstrap-sprockets";
+@import "bootstrap";
+@import "font-awesome";
+@import "uploader";
+
+html, body{
+	height: 100%;
+	background-color: #f7f9fc;
+	font-family: 'Open Sans', sans-serif;
+	color: #333;
+	font-size: 13px;
+	line-height: 150%;
+}
+/*
+* Global add-ons
+*/
+canvas{
+	vertical-align: top;
+}
+
+.sub-header{
+	padding-bottom: 10px;
+	border-bottom: 1px solid #eee;
+}
+
+.panel,
+.panel-heading,
+.form-control,
+.btn{
+	border-radius: 0;
+}
+
+.page-header{
+	h1, h2, h3, h4{
+		display: table-cell;
+		margin: 0;
+		vertical-align: middle;
+	}
+
+	.page-header-actions{
+		display: table-cell;
+		padding: 3px 0 0 0;
+		text-align: right;
+		vertical-align: middle;
+	}
+
+	.btn{
+		.fa{
+			margin: 0 6px 0 0;
+		}
+	}
+}
+
+.staff{
+
+	.list-values{
+		margin: 0 0 5px;
+	}
+
+	.label{
+		display: inline-block;
+		height: 23px;
+		padding: 3px 5px 4px;
+		line-height: 16px;
+		font-size: 13px;
+		vertical-align: top;
+		font-weight: normal;
+
+		.fa-trash{
+			margin: 0 0 0 4px;
+			cursor: pointer;
+			color: #fff;
+
+			&:hover{
+				color: red;
+			}
+		}
+	}
+
+}
+
+.alert{
+	&.alert-notice{
+		@extend .alert-success;
+	}
+}
+
+//ui sortable
+.staff{
+	.sortable_tree{
+
+		ol{
+			margin-left: 20px;
+			padding-left: 20px;
+			border-left: 1px dotted #398439;
+
+			li{
+
+				&:last-child{
+					margin-bottom: 0;
+				}
+			}
+		}
+
+		.item{
+			padding: 6px 11px;
+
+			h4{
+				height: 20px;
+				font-size: 15px;
+				line-height: 18px;
+
+				a{
+					display: inline-block;
+					font-size: inherit;
+					line-height: inherit;
+					color: #428bca;
+
+					&:hover,
+					&:focus{
+						color: #2a6496;
+					}
+				}
+			}
+		}
+
+		.delete,
+		.edit,
+		.handle{
+			width: 20px;
+			height: 20px;
+			margin-top: 0;
+			background: none !important;
+			font-style: normal;
+			color: #31708f;
+			font-size: 20px;
+			line-height: 20px;
+
+			&:before{
+				font-family: FontAwesome;
+			}
+
+			&:hover{
+				color: #f00;
+			}
+		}
+
+		.handle{
+			&:before{
+				content: "";
+			}
+		}
+
+		.controls{
+			top: 6px;
+			right: 8px;
+		}
+
+		.edit,
+		.delete{
+			margin: 0 0 0 8px;
+			padding: 0;
+			text-decoration: none !important;
+		}
+
+		.edit{
+			&:before{
+				content: "";
+			}
+		}
+
+		.delete{
+			&:before{
+				content: "";
+			}
+		}
+
+	}
+}
+
+fieldset{
+
+}
+
+.products-article{
+    width: 70px;
+}
+.products-name{
+    width: 200px;
+}
+.products-price{
+    width: 110px;
+}
+.products-sale{
+    width: 70px;
+}
+.products-photo{
+    width: 220px;
+    text-align: center;
+}
+.label-default{
+    text-decoration: line-through;
+}

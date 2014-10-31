@@ -1,0 +1,24 @@
+doctype html
+html ng-app="admin"
+  head
+    base href="/admin/"
+    title Rocket-cms
+    = stylesheet_link_tag 'admin/application', media: 'all'
+    = javascript_include_tag 'admin/application'
+    = javascript_include_tag 'admin/app'
+    = csrf_meta_tags
+
+  body.staff
+
+    .sidebar
+      .sidebar-cont
+        =render 'admin/sidebar/sidebar'
+
+    .main
+      .main-cont              
+        -flash.each do |key, value|
+          .alert class="alert-#{key}"
+            = value
+        = yield
+          /.row
+              = debug(params) if Rails.env.development?

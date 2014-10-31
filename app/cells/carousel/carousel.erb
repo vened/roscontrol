@@ -1,0 +1,13 @@
+<div class="slider" ng-controller="CarouselCtrl" ng-init="CarouselFind()">
+  <carousel interval="myInterval">
+    <slide ng-repeat="slide in slides" active="slide.active">
+      <img ng-src="{{slide.photo.slider.url}}" style="margin:auto;">
+
+      <div class="carousel-caption" ng-if="slide.name">
+        <h2>{{slide.name}}</h2>
+        <p>{{slide.body}}</p>
+      </div>
+    </slide>
+  </carousel>
+</div>
+

@@ -1,0 +1,39 @@
+.panel.panel-success
+  .panel-heading
+    h3.panel-title Информация о категории
+
+  .panel-body
+    form ng-init="obj.authenticity_token = '#{form_authenticity_token}'" 
+      .alert.alert-danger ng-if="errors"
+        h4.text-center При сохранении возникли следующие ошибки:
+        br
+        dl.dl-horizontal ng-if="errors.name" 
+          dt Название: 
+          dd ng-bind="errors.name[0]"
+        dl.dl-horizontal ng-if="errors.path" 
+          dt Путь: 
+          dd ng-bind="errors.path[0]"
+      .row
+        .col-sm-6
+          .form-group
+            label for="name" Название
+            input.form-control#name name="name" type="text" ng-model="obj.name" 
+
+          .form-group
+            label for="parent_id" Родительская категория
+            select.form-control#parent_id ng-model="obj.parent_id"
+              -@categories.each do |i|
+                option value="#{i.id}" 
+                  = "#{'-' * i.level} #{i.name}"
+
+          .form-group
+            label for="path" Путь(url, например - kamod, только латиницей)
+            input.form-control#path type="text" ng-model="obj.path"
+
+        .col-sm-6
+          photos-uploaded resource-name="category" resource-id="#{@category.id}"
+          uploader-component upload-url="/admin/category/photos/upload" resource-name="category_id" resource-id="#{@category.id}"
+
+      .form-group
+        label for="body" Описание
+        textarea.form-control#body type="text" ng-model="obj.body"

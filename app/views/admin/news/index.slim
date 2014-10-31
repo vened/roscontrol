@@ -1,0 +1,27 @@
+.page-header
+  h2 Новости
+  .page-header-actions
+    = link_to new_admin_news_path, class: 'btn btn-success' do
+      i class="fa fa-plus"
+      ' Добавить новость
+
+.content
+  table class="table table-bordered"
+    thead
+      tr
+        th Заголовок
+        th Содержимое
+        th Дата
+        th Действия
+
+    tbody
+      -@news.each do |item|
+        tr
+          td=item.name
+          td= raw item.body.truncate(150)
+          td= item.created_at.strftime("%d.%m.%Y")
+          td
+            = link_to edit_admin_news_path(item), class: 'btn btn-success' do
+              span.fa.fa-lg.fa-edit
+            = link_to admin_news_path(item), class: 'btn btn-danger', method: "delete" do
+              span.fa.fa-lg.fa-trash

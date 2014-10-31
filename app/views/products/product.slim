@@ -1,0 +1,50 @@
+-content_for :title do
+  | Каталог
+
+.main.catalog.photo-gallery
+
+  ul.path
+    li=link_to "Каталог", "/catalog/"
+    li >
+    li=link_to @category.parent.name, @category.parent.front_full_path
+    li >
+    li
+      span= @product.name
+
+  .product
+    .product-body
+      
+      h1= @product.name
+      
+      -if @product.article
+        dl.product-property
+          dt Артикул:
+          dd= @product.article
+      
+      -@properties.each do |property|
+        dl.product-property
+          dt
+            = property.name
+            | :
+          dd
+            -@values.each do |value|
+              -if property.values.exists?(value)
+                =value.value
+                |&nbsp;
+                =property.unit
+      
+      -if @product.price
+        dl.product-property.price
+          dt Цена:
+          dd= number_to_currency(@product.price, unit: 'руб.', delimiter: " ", precision: 0)
+
+    .product-photo-root
+      =link_to("#{@product.photos.first.photo}", class:"insert-img", title: @product.name) do
+        =image_tag @product.photos.first.photo
+
+    .product-photos
+      -@product.photos.each do |photo|
+        -unless photo == @product.photos.first
+          .product-photos-item
+            =link_to("#{photo.photo}", class:"insert-img product-photo", title: @product.name) do
+              =image_tag photo.photo.thumb
