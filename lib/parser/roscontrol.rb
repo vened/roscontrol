@@ -90,8 +90,10 @@ class RoscontrolParser
         property: product_property,
         test: product_test
     )
-    photo = Photo.create(remote_photo_url: product_image, name: product_name)
-    photo.products << product
+    if product_image.length == 1
+      photo = Photo.create(remote_photo_url: product_image, name: product_name)
+      photo.products << product
+    end
     product.categories << category
 
     p "save!"
