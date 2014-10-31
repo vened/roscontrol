@@ -88,35 +88,10 @@ Rails.application.routes.draw do
   end
 
 
-  post '/feedback/create' => 'feedbacks#create'
 
-  root 'pages#index'
-  get '/root' => 'pages#index'
-
-  get '/pages/carousel' => 'pages#carousel'
-
-  #filters
-  get '/product/filters/' => 'products#filters'
-
-
-  get '/catalog/:category_id/product/:product_id' => 'products#product'
-  get '/catalog/*section/:category_id/product/:product_id' => 'products#product'
-  get '/catalog/*section/*section/:category_id/product/:product_id' => 'products#product'
-
-  get '/catalog' => 'products#catalog'
-  get '/catalog/:id' => 'products#category'
-  get '/catalog/*section/:id' => 'products#category'
-  get '/catalog/*section/*section/:id' => 'products#category'
-
-  get '/brands' => 'products#brands', :as => 'brands'
-  get '/brands/:id' => 'products#brand'
-
-  get '/news' => 'news#index'
-  get '/news/:id' => 'news#show', :as => 'news_show'
+  root 'products#index'
+  # get '/' => 
   
-  get ':id' => 'pages#show'
-
-
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

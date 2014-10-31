@@ -33,6 +33,7 @@ gem 'ejs'
 
 gem 'bcrypt-ruby', '3.1.5'
 
+gem 'rack-cors', require: 'rack/cors'
 
 gem 'nokogiri'
 # gem 'mechanize'
