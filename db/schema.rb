@@ -175,7 +175,9 @@ ActiveRecord::Schema.define(version: 20141020045202) do
     t.text     "body"
     t.decimal  "price",      precision: 10, scale: 0
     t.integer  "sale"
-    t.string   "art"
+    t.string   "rate"
+    t.text     "property"
+    t.text     "test"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.boolean  "new"

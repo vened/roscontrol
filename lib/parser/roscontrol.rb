@@ -21,8 +21,8 @@ class RoscontrolParser
       category_path = I18n.transliterate(category_name)
       category_path = category_path.gsub(/\s/, '-')
 
-      category = category_save(category_name, category_photo, category_path, parent_category_id)
-
+      category = category_save(category_name, category_photo, category_path, parent_category_id)      
+      
       if parent_category_id
         parse_product(category_url, category)
       else
@@ -50,8 +50,11 @@ class RoscontrolParser
 
 
   def parse_product(url, category)
+    p url
     site_url = "http://roscontrol.com"
-    products = Nokogiri::HTML(open(site_url + url)).css(".b_section_tested .item")
+    products = Nokogiri::HTML(open(site_url + url)).css(".b_section_tested")
+    pagination = products.css(".b_pagination .row_1 .item:last-child")
+    products = products.css(".item")
     products.each do |product|
       product_url = product.css(".name .h3 a")
       if product_url.length > 0
@@ -59,21 +62,41 @@ class RoscontrolParser
         parse_product_page(product_url, category)
       end
     end
+    if pagination.length == 1
+      paginate_url = pagination.first['href']
+      if paginate_url != nil
+        paginate_product(paginate_url, category)
+      end
+    end
   end
 
+  def paginate_product(paginate_url, category)
+    parse_product(paginate_url, category)
+  end
+  
   def parse_product_page(product_url, category)
     site_url = "http://roscontrol.com"
     page = Nokogiri::HTML(open(site_url + product_url)).css(".content_right")
     product_name = page.css(".page_tests-title h1").text
     product_rate = page.css(".testlab_product_page_rating .row_1 div").text.gsub(/\n/, "").gsub(/\s{2,}/) {}
     product_image = page.css(".top_product_area_inner .l_item_main_photos li a").first['href']
-    product_property = page.css(".top_product_area_inner .right_side .features .content ul")
+    product_property = page.css(".top_product_area_inner .right_side .features .content ul").to_html
     product_test = page.css(".product_test .teaser div:last-child").text
-    puts product_name
-    puts product_rate
-    puts product_image
-    puts product_property
-    puts product_test
+    
+    product = Product.create(
+        price: 0,
+        name: product_name,
+        rate: product_rate,
+        property: product_property,
+        test: product_test
+    )
+    photo = Photo.create(remote_photo_url: product_image, name: product_name)
+    photo.products << product
+    product.categories << category
+
+    p "save!"
+    p product_name
+    p "--------------------------"
   end
 
 end

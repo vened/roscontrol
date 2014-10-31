@@ -6,7 +6,9 @@ class CreateProducts < ActiveRecord::Migration
       t.text :body
       t.decimal :price
       t.integer :sale
-      t.string :art
+      t.string :rate
+      t.text :property
+      t.text :test
 
       t.timestamps
     end
