@@ -37,17 +37,6 @@ class RoscontrolParser
     parse_categories(page, parent_category.id)
   end
 
-  def category_save(category_name, category_photo, category_path, parent)
-    category = Category.find_by_name(category_name)
-    if category.blank?
-      category = Category.create(name: category_name, path: category_path, parent_id: parent)
-      category.photos.create(remote_photo_url: category_photo, name: category_name)
-    else
-      category.update(name: category_name, path: category_path)
-    end
-    return category
-  end
-
 
   def parse_product(url, category)
     p url
@@ -79,27 +68,52 @@ class RoscontrolParser
     page = Nokogiri::HTML(open(site_url + product_url)).css(".content_right")
     product_name = page.css(".page_tests-title h1").text
     product_rate = page.css(".testlab_product_page_rating .row_1 div").text.gsub(/\n/, "").gsub(/\s{2,}/) {}
-    product_image = page.css(".top_product_area_inner .l_item_main_photos li a").first['href']
+    product_image = page.css(".top_product_area_inner .l_item_main_photos li a")
     product_property = page.css(".top_product_area_inner .right_side .features .content ul").to_html
     product_test = page.css(".product_test .teaser div:last-child").text
-    
-    product = Product.create(
-        price: 0,
-        name: product_name,
-        rate: product_rate,
-        property: product_property,
-        test: product_test
-    )
-    if product_image.length == 1
-      photo = Photo.create(remote_photo_url: product_image, name: product_name)
-      photo.products << product
+
+    product = Product.find_by_name(product_name)
+    if product.blank?
+      product = Product.create(
+          price: 0,
+          name: product_name,
+          rate: product_rate,
+          property: product_property,
+          test: product_test
+      )
+      if product_image.length == 1
+        photo = Photo.create(remote_photo_url: product_image.first['href'], name: product_name)
+        photo.products << product
+      end
+      product.categories << category
+    else
+      product.update(
+          price: 0,
+          name: product_name,
+          rate: product_rate,
+          property: product_property,
+          test: product_test
+      )
     end
-    product.categories << category
+    
 
     p "save!"
     p product_name
     p "--------------------------"
   end
+
+
+  def category_save(category_name, category_photo, category_path, parent)
+    category = Category.find_by_name(category_name)
+    if category.blank?
+      category = Category.create(name: category_name, path: category_path, parent_id: parent)
+      category.photos.create(remote_photo_url: category_photo, name: category_name)
+    else
+      category.update(name: category_name, path: category_path)
+    end
+    return category
+  end
+
 
 end
 
