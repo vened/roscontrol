@@ -8,6 +8,7 @@ class CreateCategories < ActiveRecord::Migration
       t.integer :rgt
       t.integer :depth
       t.string :path
+      t.string :photo
     end
     add_index :categories, :sortable
     add_index :categories, :parent_id

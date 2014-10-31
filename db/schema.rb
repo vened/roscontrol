@@ -52,6 +52,7 @@ ActiveRecord::Schema.define(version: 20141020045202) do
     t.integer "rgt"
     t.integer "depth"
     t.string  "path"
+    t.string  "photo"
     t.text    "body"
   end
 
@@ -170,7 +171,6 @@ ActiveRecord::Schema.define(version: 20141020045202) do
   add_index "photos_sub_products", ["sub_product_id", "photo_id"], name: "index_photos_sub_products_on_sub_product_id_and_photo_id", using: :btree
 
   create_table "products", force: true do |t|
-    t.string   "article"
     t.string   "name"
     t.text     "body"
     t.decimal  "price",      precision: 10, scale: 0
@@ -178,9 +178,9 @@ ActiveRecord::Schema.define(version: 20141020045202) do
     t.string   "rate"
     t.text     "property"
     t.text     "test"
+    t.string   "photo"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.boolean  "new"
   end
 
   add_index "products", ["price"], name: "index_products_on_price", using: :btree

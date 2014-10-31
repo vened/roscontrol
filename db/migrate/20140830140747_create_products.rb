@@ -1,7 +1,6 @@
 class CreateProducts < ActiveRecord::Migration
   def change
     create_table :products do |t|
-      t.string :article
       t.string :name
       t.text :body
       t.decimal :price
@@ -9,6 +8,7 @@ class CreateProducts < ActiveRecord::Migration
       t.string :rate
       t.text :property
       t.text :test
+      t.string :photo
 
       t.timestamps
     end

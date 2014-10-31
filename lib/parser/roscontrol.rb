@@ -72,6 +72,12 @@ class RoscontrolParser
     product_property = page.css(".top_product_area_inner .right_side .features .content ul").to_html
     product_test = page.css(".product_test .teaser div:last-child").text
 
+    if product_image.length == 1
+      product_image = product_image.first['href']
+    else
+      product_image = nil
+    end
+    
     product = Product.find_by_name(product_name)
     if product.blank?
       product = Product.create(
@@ -79,12 +85,9 @@ class RoscontrolParser
           name: product_name,
           rate: product_rate,
           property: product_property,
-          test: product_test
+          test: product_test,
+          remote_photo_url: product_image
       )
-      if product_image.length == 1
-        photo = Photo.create(remote_photo_url: product_image.first['href'], name: product_name)
-        photo.products << product
-      end
       product.categories << category
     else
       product.update(
@@ -92,7 +95,8 @@ class RoscontrolParser
           name: product_name,
           rate: product_rate,
           property: product_property,
-          test: product_test
+          test: product_test,
+          remote_photo_url: product_image
       )
     end
     
@@ -106,8 +110,7 @@ class RoscontrolParser
   def category_save(category_name, category_photo, category_path, parent)
     category = Category.find_by_name(category_name)
     if category.blank?
-      category = Category.create(name: category_name, path: category_path, parent_id: parent)
-      category.photos.create(remote_photo_url: category_photo, name: category_name)
+      category = Category.create(name: category_name, path: category_path, remote_photo_url: category_photo, parent_id: parent)
     else
       category.update(name: category_name, path: category_path)
     end

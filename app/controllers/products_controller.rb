@@ -7,17 +7,20 @@ class ProductsController < ApplicationController
   end
 
   def category
-    @category = Category.find_by_path(params[:id])
-    @categories = @category.children.pluck(:id) 
-    @products = Product.includes(:categories, :photos).where(categories: {id: @categories}).page(params[:page])
-    @properties = Property.all
+    @category = Category.find(params[:id])
+    @categories = @category.children
+    render :json => {category: @category, categories: @categories}
+  end
+
+  def products
+    @category = Category.find(params[:id])
+    @products = @category.products
+    render :json => {category: @category, products: @products}
   end
 
   def product
-    @product = Product.includes(:categories, :photos, :values, :properties).find(params[:product_id])
-    @properties = @product.properties.includes(:values)
-    @values = @product.values
-    @category = @product.categories.first
+    @product = Product.find(params[:id])
+    render :json => @product
   end
 
   private

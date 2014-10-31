@@ -56,6 +56,6 @@ class Admin::CategoriesController < Admin::AdminController
   end
 
   def category_params
-    params.require(:category).permit(:sortable, :parent_id, :path, :name, :body)
+    params.require(:category).permit(:sortable, :parent_id, :path, :name, :body, :photo)
   end
 end

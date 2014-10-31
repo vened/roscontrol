@@ -90,7 +90,9 @@ Rails.application.routes.draw do
 
 
   root 'products#index'
-  # get '/' => 
+  get '/category/:id' => 'products#category'
+  get '/category/products/:id' => 'products#products'
+  get '/product/:id' => 'products#product'
   
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

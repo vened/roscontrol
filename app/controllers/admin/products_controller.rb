@@ -155,7 +155,7 @@ class Admin::ProductsController < Admin::AdminController
   end
 
   def product_params
-    params.require(:product).permit(:name, :body, :price, :sale, :art, :article, :new, :property_id, :value_id, :brand_id, :category_id, :sub_product_id)
+    params.require(:product).permit(:name, :body, :price, :photo, :sale, :art, :article, :new, :property_id, :value_id, :brand_id, :category_id, :sub_product_id)
   end
 
 end
