@@ -4,10 +4,10 @@
 require "rvm/capistrano"
 require "bundler/capistrano"
 
-set :application, "santemax"
+set :application, "roscontrol"
 set :shared_children, shared_children
-set :repository, "git@bitbucket.org:vened/santemax.ru.git"
-set :deploy_to, "/home/max/www/santemax"
+set :repository, "git@github.com:vened/roscontrol.git"
+set :deploy_to, "/home/max/www/roscontrol"
 set :scm, :git
 set :branch, "master"
 set :user, "max"
